@@ -4,18 +4,17 @@ import com.pgr203.k9001.http.HttpHandle;
 import com.pgr203.k9001.http.HttpRequest;
 import com.pgr203.k9001.http.HttpResponse;
 import com.pgr203.k9001.http.HttpServer;
-import com.pgr203.k9001.services.Accounts;
-import com.pgr203.k9001.model.Account;
+import com.pgr203.k9001.services.Projects;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class AccountCreateController implements HttpHandle {
-    private final Accounts accounts;
+public class JoinProjectController implements HttpHandle {
+    private final Projects projects;
 
-    public AccountCreateController(Accounts accounts) {
-        this.accounts = accounts;
+    public JoinProjectController(Projects projects) {
+        this.projects = projects;
     }
 
     @Override
@@ -23,12 +22,12 @@ public class AccountCreateController implements HttpHandle {
         try {
             if (request.getMethod().equals("POST")) {
                 Map<String, String> query = HttpServer.parseQueryString(request.getBody());
-                if (query.containsKey("full_name") && query.containsKey("email")) {
-                    Account account = new Account();
-                    account.setAccountName(query.get("full_name"));
-                    account.setEmail(query.get("email"));
+                System.out.println(query);
+                if (query.containsKey("member_id") && query.containsKey("project_id")) {
+                    long accountId = Long.parseLong(query.get("member_id"));
+                    long projectId = Long.parseLong(query.get("project_id"));
 
-                    accounts.create(account);
+                    projects.joinProject(accountId, projectId);
                 }
                 response.redirectToGet(request.getHeaders().get("referer"));
             }

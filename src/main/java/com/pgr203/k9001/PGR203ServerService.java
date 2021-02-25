@@ -51,6 +51,8 @@ public class PGR203ServerService extends PGR203ServerConfiguration {
         AccountListController accountListController = new AccountListController(accounts);
         ProjectCreateController projectCreateController = new ProjectCreateController(projects);
         ProjectListController projectListController = new ProjectListController(projects);
+        TaskListController taskListController = new TaskListController(projects);
+        JoinProjectController joinProjectController = new JoinProjectController(projects);
 
         HttpServer httpServer = new HttpServer(8080);
         httpServer.setDefaultHandler(fileController);
@@ -58,6 +60,8 @@ public class PGR203ServerService extends PGR203ServerConfiguration {
         httpServer.handle("/api/projectMembers", accountListController);
         httpServer.handle("/api/projects", projectCreateController);
         httpServer.handle("/api/projectList", projectListController);
+        httpServer.handle("/api/tasks", taskListController);
+        httpServer.handle("/api/addProjectMember", joinProjectController);
         httpServer.listenAndServe();
     }
 

@@ -35,9 +35,9 @@ public class HttpResponse {
         write(body);
     }
 
-    public void redirect(String path) throws IOException {
-        setStatusCode(302);
-        setHeader("location", path);
+    public void redirectToGet(String referer) throws IOException {
+        setStatusCode(303);
+        setHeader("location", referer);
         write();
     }
 

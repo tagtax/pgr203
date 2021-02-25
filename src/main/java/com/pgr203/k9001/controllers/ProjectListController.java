@@ -3,7 +3,7 @@ package com.pgr203.k9001.controllers;
 import com.pgr203.k9001.http.HttpHandle;
 import com.pgr203.k9001.http.HttpRequest;
 import com.pgr203.k9001.http.HttpResponse;
-import com.pgr203.k9001.service.Projects;
+import com.pgr203.k9001.services.Projects;
 
 import java.io.IOException;
 import java.sql.SQLException;
