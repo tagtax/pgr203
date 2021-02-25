@@ -22,7 +22,6 @@ public class JoinProjectController implements HttpHandle {
         try {
             if (request.getMethod().equals("POST")) {
                 Map<String, String> query = HttpServer.parseQueryString(request.getBody());
-                System.out.println(query);
                 if (query.containsKey("member_id") && query.containsKey("project_id")) {
                     long accountId = Long.parseLong(query.get("member_id"));
                     long projectId = Long.parseLong(query.get("project_id"));
