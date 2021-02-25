@@ -1,6 +1,5 @@
 package com.pgr203.k9001.services;
 
-import com.pgr203.k9001.model.Account;
 import com.pgr203.k9001.model.Project;
 
 import java.sql.Connection;
@@ -57,13 +56,35 @@ public class Projects implements Dao<Project> {
     }
 
     @Override
-    public void update(Account account, String[] params) throws SQLException {
-
+    public void update(Project project, String[] params) throws SQLException {
+        String sql = "UPDATE projects SET status = 't' WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, project.getId());
+            statement.executeQuery();
+        }
     }
 
     @Override
-    public void delete(Account account) throws SQLException {
+    public void delete(Project project) throws SQLException {
+        connection.beginRequest();
 
+        {
+            String sql = "DELETE FROM project_accounts WHERE project_id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setLong(1, project.getId());
+                statement.executeQuery();
+            }
+        }
+
+        {
+            String sql = "DELETE FROM projects WHERE id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setLong(1, project.getId());
+                statement.executeQuery();
+            }
+        }
+
+        connection.commit();
     }
 
     public List<Project> getTaskList(long id) throws SQLException {
