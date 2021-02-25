@@ -1,4 +1,4 @@
-package com.pgr203.k9001.service;
+package com.pgr203.k9001.services;
 
 import com.pgr203.k9001.model.Account;
 import com.pgr203.k9001.model.Project;
@@ -64,5 +64,44 @@ public class Projects implements Dao<Project> {
     @Override
     public void delete(Account account) throws SQLException {
 
+    }
+
+    public List<Project> getTaskList(long id) throws SQLException {
+        List<Project> result = new ArrayList<>();
+
+        String sql = "SELECT p.name, p.status FROM project_accounts pa JOIN accounts a on a.id = pa.account_id JOIN projects p on p.id = pa.project_id WHERE a.id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, id);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Project project = new Project();
+                    project.setProjectName(resultSet.getString("name"));
+                    project.setStatus(resultSet.getBoolean("status"));
+                    result.add(project);
+                }
+            }
+        }
+        return result;
+    }
+
+    public void joinProject(long projectId, long accountId) throws SQLException {
+        String sql = "SELECT COUNT(project_id) FROM project_accounts WHERE project_id = ? AND account_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, projectId);
+            statement.setLong(2, accountId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    if (resultSet.getInt("count") == 0) {
+                        String insertSql = "INSERT INTO project_accounts (project_id, account_id) VALUES (?, ?)";
+                        try (PreparedStatement insertStatement = connection.prepareStatement(insertSql)) {
+                            insertStatement.setLong(1, projectId);
+                            insertStatement.setLong(2, accountId);
+                            insertStatement.execute();
+                        }
+                    }
+                }
+            }
+        }
     }
 }

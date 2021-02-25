@@ -2,8 +2,8 @@ package com.pgr203.k9001;
 
 import com.pgr203.k9001.controllers.*;
 import com.pgr203.k9001.http.HttpServer;
-import com.pgr203.k9001.service.Accounts;
-import com.pgr203.k9001.service.Projects;
+import com.pgr203.k9001.services.Accounts;
+import com.pgr203.k9001.services.Projects;
 import org.flywaydb.core.Flyway;
 
 import java.io.IOException;

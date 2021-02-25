@@ -1,4 +1,4 @@
-package com.pgr203.k9001.service;
+package com.pgr203.k9001.services;
 
 import com.pgr203.k9001.model.Account;
 
