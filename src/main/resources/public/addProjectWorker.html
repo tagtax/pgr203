@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>KristianiaProject</title>
+    <title>Add Project Member | KristianiaProject</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Project view</h1>
-<h2>Project Members</h2>
-<div id="projectMembers"></div>
-<h2>Project List</h2>
-<div id="projectList"></div>
+<h1>Add project member</h1>
+<form method="POST" action="/api/addProjectMember">
+    <label>Member name: <select id="projectMembers" name="member_id"></select></label>
+    <label>Project name: <select id="projectList" name="project_id"></select></label>
+    <button>Add</button>
+</form>
 <div>
-    <a href="newProject.html">Add new project</a>
-    <a href="newWorker.html">Add new member</a>
-    <a href="addProjectWorker.html">Add project member</a>
-    <a href="listTasks.html">Vis oppgaver</a>
+    <a href=".">Return to front page</a>
 </div>
 </body>
 <script>
