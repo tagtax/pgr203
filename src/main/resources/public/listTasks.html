@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List tasks | KristianiaProject</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Add project member</h1>
+<form>
+    <label>Member name: <select id="projectMembers" name="projectMember"></select></label>
+    <ul id="tasks"></ul>
+    <button id="getTasks">List</button>
+</form>
+<div>
+    <a href=".">Return to front page</a>
+</div>
+</body>
+<script>
+    fetch("/api/projectMembers")
+        .then(function (response) {
+            return response.text();
+        }).then(function (text) {
+        document.getElementById("projectMembers").innerHTML = text;
+    });
+
+    document.getElementById("getTasks").onclick = function () {
+        fetch("/api/tasks")
+            .then(function (response) {
+                return response.text()
+            }).then(function (text) {
+            document.getElementById("tasks").innerText = text;
+        })
+    }
+</script>
+</html>

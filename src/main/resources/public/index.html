@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KristianiaProject</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Project view</h1>
+<h2>Project Members</h2>
+<div id="projectMembers"></div>
+<h2>Project List</h2>
+<div id="projectList"></div>
+<div>
+    <a href="newProject.html">Add new project</a>
+    <a href="newWorker.html">Add new project member</a>
+    <a href="listTasks.html">Vis oppgaver</a>
+</div>
+</body>
+<script>
+    fetch("/api/projectMembers")
+        .then(function (response) {
+            return response.text();
+        }).then(function (text) {
+        document.getElementById("projectMembers").innerHTML = text;
+    });
+
+    fetch("/api/projectList")
+        .then(function (response) {
+            return response.text();
+        }).then(function (text) {
+        document.getElementById("projectList").innerHTML = text;
+    });
+</script>
+</html>
