@@ -33,7 +33,7 @@ public class HttpMessage {
     static String readBody(Map<String, String> headers, InputStream inputStream) throws IOException {
         if (headers.containsKey("content-length")) {
             StringBuilder body = new StringBuilder();
-            for (int currentLength = 0; currentLength < Integer.parseInt(headers.get("content-length")); currentLength++) {
+            for (int currentLength = 0; currentLength <= Integer.parseInt(headers.get("content-length")); currentLength++) {
                 body.append((char) inputStream.read());
             }
             return body.toString();

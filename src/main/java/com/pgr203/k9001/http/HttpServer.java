@@ -91,7 +91,8 @@ public class HttpServer {
 
         Map<String, String> parameters = new HashMap<>();
         for (String query : body.split("&")) {
-            String[] parameter = query.split("=");
+            String[] parameter = query.split("=", 2);
+            if (parameter.length != 2) continue;
 
             String parameterName = parameter[0].trim();
             String parameterValue = parameter[1].trim();
