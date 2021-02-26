@@ -1,7 +1,7 @@
 <h1>Eksamen Avansert Java PGR 203 Kandidatnr: 9001</h1>
-Link:
+Link: https://github.com/tagtax/pgr203
 <br> Video: https://drive.google.com/file/d/1C7MRMhs4ukha00CSXPyfnClzenFLFHZb/view?usp=sharing
-<br> Github actions: 
+<br> Github actions: https://github.com/tagtax/pgr203/runs/1986003689?check_suite_focus=true
 
 <h1>Hvordan kjøre dette programmet</h1>
 1. mvn package <br>
