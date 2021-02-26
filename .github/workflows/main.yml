@@ -31,11 +31,17 @@ jobs:
           
       # Build
       - name: Run a multi-line script
-        run: mvn -B package
+        run: mvn -B package --file pom.xml
         
       # List
       - name: List the current directory
         run: ls -a 
+        
+      # Target folder
+      - name: What is in the target folder?
+        run: |
+          cd target
+          ls -a
           
           
           
