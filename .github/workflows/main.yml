@@ -28,15 +28,18 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.9
-
-     
+ 
         
       # List
       - name: List the current directory
         run: ls -a 
           
           
-          
+       # Target folder
+      - name: What is in the target folder?
+        run: |
+          cd target
+          ls -a
           
           
           
