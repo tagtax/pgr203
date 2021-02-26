@@ -37,12 +37,6 @@ jobs:
       - name: List the current directory
         run: ls -a 
           
-      # Target folder
-      - name: What is in the target folder?
-        run: |
-          cd target
-          ls -a
-          
           
           
           
