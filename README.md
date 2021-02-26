@@ -1,7 +1,7 @@
 <h1>Eksamen Avansert Java PGR 203 Kandidatnr: 9001</h1>
-Link: https://classroom.github.com/a/kvLRGopL
+Link: https://classroom.github.com/a/kvLRGopL eller https://github.com/tagtax/pgr203
 <br> Video: https://drive.google.com/file/d/1C7MRMhs4ukha00CSXPyfnClzenFLFHZb/view?usp=sharing
-<br> Github actions: https://github.com/pgr203k9001/kont-eksamen-pgr203-k-9001-tagtax/runs/1986331280?check_suite_focus=true
+<br> Github actions: https://github.com/pgr203k9001/kont-eksamen-pgr203-k-9001-tagtax/runs/1986331280?check_suite_focus=true eller https://github.com/tagtax/pgr203/runs/1986261204?check_suite_focus=true
 
 <h1>Hvordan kjøre dette programmet</h1>
 1. mvn package <br>
