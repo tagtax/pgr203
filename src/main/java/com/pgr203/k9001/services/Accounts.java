@@ -32,8 +32,24 @@ public class Accounts implements Dao<Account> {
     }
 
     @Override
-    public Optional<Account> read(long id) {
-        return Optional.empty();
+    public Optional<Account> read(long id) throws SQLException {
+        Optional<Account> account = Optional.empty();
+
+        String sql = "SELECT * FROM accounts WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, id);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    account = Optional.of(new Account(
+                            resultSet.getLong("id"),
+                            resultSet.getString("name"),
+                            resultSet.getString("email")
+                    ));
+                }
+            }
+        }
+        return account;
     }
 
     public List<Account> readAll() throws SQLException {

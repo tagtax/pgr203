@@ -33,7 +33,23 @@ public class Projects implements Dao<Project> {
 
     @Override
     public Optional<Project> read(long id) throws SQLException {
-        return Optional.empty();
+        Optional<Project> project = Optional.empty();
+
+        String sql = "SELECT * FROM projects WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, id);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    project = Optional.of(new Project(
+                            resultSet.getLong("id"),
+                            resultSet.getString("name"),
+                            resultSet.getBoolean("status")
+                    ));
+                }
+            }
+        }
+        return project;
     }
 
     public List<Project> readAll() throws SQLException {
