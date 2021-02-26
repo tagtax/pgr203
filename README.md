@@ -5,7 +5,7 @@ Link: https://github.com/tagtax/pgr203
 
 <h1>Hvordan kjøre dette programmet</h1>
 1. mvn package <br>
-2. Run java file:  src/main/java/com/pgr203/k9001/PGR203ServerService.java <br>
+2. java -jar target/pg203k9001-1.0-SNAPSHOT.jar <br>
 3. open i browser 127.0.0.1:8080 <br>
 
 <h1>Funksjonalitet</h1>
